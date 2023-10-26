@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'accounts',
     'store',
 ]
 
@@ -106,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Dhaka'
 
 USE_I18N = True
 
@@ -122,3 +124,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Our customizations
+AUTH_USER_MODEL = "accounts.CustomUser"
+
+# media settings
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
