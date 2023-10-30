@@ -1,7 +1,7 @@
 import os
 
 def product_image_upload_path(instance, filename):
-    image_id = instance.id
+    image_id = instance.product.id
 
     # generate upload path
     new_filename = f"product_image_{image_id}_{filename}"

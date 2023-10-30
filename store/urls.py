@@ -1,8 +1,17 @@
-from django.urls import path
+from django.urls import path,  include
+
+from rest_framework import routers
 from .views import *
+from accounts import views as accountsView
+
+route = routers.DefaultRouter()
+route.register('products', ProductViewsets)
+route.register('categories', CategoryViewsets)
+route.register('product-images', ProductImageViewsets)
+
+# users api
+route.register('users', accountsView.CustomUserViewsets)
 
 urlpatterns = [
-    path('categories', CategoryList.as_view(), name="category"),
-    path('products', ProductList.as_view(), name="product"),
-    path('product-image', ProductImageList.as_view(), name="productImage"),
+    path('', include(route.urls))
 ]

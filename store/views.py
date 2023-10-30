@@ -1,17 +1,17 @@
-from django.shortcuts import render
-from rest_framework import generics
+from rest_framework import viewsets
 
 from .serializers import *
 from .models import *
 
-class CategoryList(generics.ListCreateAPIView):
+class CategoryViewsets(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
-class ProductList(generics.ListCreateAPIView):
+class ProductViewsets(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
-class ProductImageList(generics.ListCreateAPIView):
+
+class ProductImageViewsets(viewsets.ModelViewSet):
     queryset = ProductImage.objects.all()
     serializer_class = ProductImageSerializer
