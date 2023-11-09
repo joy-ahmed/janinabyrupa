@@ -37,6 +37,7 @@ class ProductImageSerializer(serializers.ModelSerializer):
         fields = '__all__'
 class ProductSerializer(serializers.ModelSerializer):
     productImage = ProductImageSerializer(many=True)
+    category = serializers.StringRelatedField()
 
     class Meta:
         model = Product
