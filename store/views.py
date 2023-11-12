@@ -1,17 +1,23 @@
-from django.shortcuts import render
-from rest_framework import generics
-
+from rest_framework import viewsets
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.filters import SearchFilter
 from .serializers import *
 from .models import *
 
-class CategoryList(generics.ListCreateAPIView):
+class CategoryViewsets(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
-class ProductList(generics.ListCreateAPIView):
+class ProductViewsets(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = '__all__'
 
-class ProductImageList(generics.ListCreateAPIView):
+    # filter_backends = [SearchFilter]
+    # search_fields = ['^title']
+
+
+class ProductImageViewsets(viewsets.ModelViewSet):
     queryset = ProductImage.objects.all()
     serializer_class = ProductImageSerializer
